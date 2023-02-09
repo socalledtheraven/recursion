@@ -5,25 +5,37 @@ public class Main {
     }
 
     public static int fib(int n) {
+        // Returns the nth Fibonacci number
+        // Base case: If n is 0, return 0
         if (n == 0) {
             return 0;
-        } else if (n == 1) {
+        }
+        // Base case: If n is 1, return 1
+        else if (n == 1) {
             return 1;
         }
 
+        // Return the sum of the two previous Fibonacci numbers
         return fib(n-1) + fib(n-2);
     }
 
     public static boolean palindrome(String s) {
+        // Returns true if the given string is a palindrome, false otherwise
+        // Base case: If the string length is 1, return true
         if (s.length() == 1) {
             return true;
-        } else if (s.length() == 2) {
+        }
+        // Base case: If the string length is 2, check if the first and last characters are the same
+        else if (s.length() == 2) {
             return s.charAt(0) == s.charAt(1);
         }
+        // Check if the first and last characters are the same and the substring in between is also a palindrome
         return ((s.charAt(0) == s.charAt(s.length()-1)) && (palindrome(s.substring(1, s.length()-2))));
     }
 
     public static int linearSearch(int[] arr, int n) {
+        // Searches for the given number 'n' in the given array 'arr'
+        // Returns the index of 'n' in the array, or -1 if not found
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == n) {
                 return i;
@@ -33,23 +45,51 @@ public class Main {
     }
 
     public static int recursiveBinarySearch(int[] arr, int n, int upper, int lower) {
+        // Searches for the given number 'n' in the given array 'arr' using a recursive binary search algorithm
+        // Returns the index of 'n' in the array, or -1 if not found
         int midpoint = (int)((upper+lower)/2);
         System.out.println("mid: " + midpoint);
+        // If the midpoint is equal to 'n', return the midpoint index
         if (arr[midpoint] == n) {
             return midpoint;
-        } else if (arr.length == 1) {
+        }
+        // If the length of the array is 1, return -1
+        else if (arr.length == 1) {
             return -1;
         }
 
+        // If the midpoint is greater than 'n', search the lower half of the array
         if (arr[midpoint] > n) {
             upper = midpoint-1;
             System.out.println("lower, " + arr[midpoint]);
             return recursiveBinarySearch(arr, n, upper, lower);
-        } else if (arr[midpoint] < n) {
+        }
+        // If the midpoint is less than 'n', search the upper half of the array
+        else if (arr[midpoint] < n) {
             lower = midpoint+1;
             System.out.println("higher, " + arr[midpoint]);
             return recursiveBinarySearch(arr, n, upper, lower);
         }
         return -1;
+    }
+
+    public static int iterativeBinarySearch(int[] arr, int n) {
+        int midpoint = (int)(arr.length/2);
+        int[] newArr = arr;
+        while (newArr[midpoint] != n) {
+            midpoint =
+            if (newArr[midpoint] == n) {
+                return midpoint;
+            } else if (arr.length == 1) {
+                return -1;
+            }
+
+            if (arr[midpoint] > n) {
+
+            } else if (arr[midpoint] < n) {
+
+            }
+        }
+
     }
 }
